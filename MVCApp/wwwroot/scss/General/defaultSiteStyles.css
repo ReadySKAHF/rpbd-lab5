@@ -1,0 +1,59 @@
+﻿@charset "UTF-8";
+@font-face {
+  font-family: 'Montserrat Italic';
+  src: url("../../fonts/montserrat-italic-variablefont_wght.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 100 900;
+  /* Обеспечиваем поддержку переменной толщины */ }
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url("../../fonts/montserrat-variablefont_wght.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  /* Поддержка переменной толщины */ }
+
+/* Сбрасываем стандартные стили */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  /* Используем основной шрифт */
+  font-weight: 400;
+  /* Базовый вес шрифта */
+  line-height: 1.6;
+  /* Добавляем удобную высоту строки */ }
+
+/* Устанавливаем общие параметры для всего документа */
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+  /* Плавная прокрутка */
+  background-color: #f9f9f9;
+  /* Светлый фон для комфорта глаз */
+  color: #333;
+  /* Базовый цвет текста */ }
+
+/* Опционально: стили для ссылок */
+a {
+  text-decoration: none;
+  /* Убираем подчеркивание */
+  color: inherit;
+  /* Наследуем цвет текста */
+  transition: color 0.3s ease;
+  /* Плавный переход для цвета */ }
+  a:hover {
+    color: #007bff;
+    /* Акцентный цвет при наведении */ }
+
+/* Опционально: добавляем удобный стиль для заголовков */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  /* Чёткий шрифт для заголовков */
+  margin-bottom: 1em;
+  /* Добавляем отступ снизу */
+  font-weight: 700;
+  /* Акцент на жирность */
+  color: #222;
+  /* Немного темнее цвет для заголовков */ }

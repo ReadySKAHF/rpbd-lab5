@@ -1,0 +1,35 @@
+﻿.defaultButton {
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Градиент для глубины */
+    color: #fff; /* Контрастный цвет текста */
+    padding: 14px 28px; /* Более комфортные размеры */
+    border: none; /* Убираем границы */
+    border-radius: 10px; /* Мягкие углы */
+    margin: 0 10px; /* Пространство между кнопками */
+    font-size: 16px; /* Чёткий размер текста */
+    font-weight: bold; /* Выразительность текста */
+    text-transform: uppercase; /* Заглавные буквы для кнопки */
+    letter-spacing: 1px; /* Лёгкое разрежение текста */
+    cursor: pointer; /* Указатель на действие */
+    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3); /* Объёмная тень */
+    transition: all 0.3s ease; /* Плавные переходы для всех изменений */
+
+    &:hover {
+        background: linear-gradient(135deg, #0056b3, #004085); /* Более насыщенный градиент при наведении */
+        box-shadow: 0 12px 20px rgba(0, 123, 255, 0.4); /* Усиленная тень */
+        transform: translateY(-3px); /* Подъём при наведении */
+    }
+
+    &:active {
+        background: linear-gradient(135deg, #004085, #003060); /* Цвет при нажатии */
+        box-shadow: 0 6px 10px rgba(0, 123, 255, 0.2); /* Уменьшение тени */
+        transform: translateY(2px); /* Эффект "нажатия" */
+    }
+
+    &:disabled {
+        background: linear-gradient(135deg, #d6d6d6, #bdbdbd); /* Градиент для отключённой кнопки */
+        color: #a1a1a1; /* Блеклый текст */
+        cursor: not-allowed; /* Запрет курсора */
+        box-shadow: none; /* Убираем тень */
+        opacity: 0.7; /* Полупрозрачность */
+    }
+}

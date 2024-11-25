@@ -1,0 +1,107 @@
+﻿@model IEnumerable<CarDto>
+
+@{
+    var controllerInfo = new ControllerInfo
+            {
+                ControllerName = ViewBag.ControllerName,
+                ViewActionName = ViewBag.ViewActionName,
+                CreateActionName = ViewBag.CreateActionName,
+                DeleteActionName = ViewBag.DeleteActionName,
+                UpdateActionName = ViewBag.UpdateActionName,
+            };
+
+    var paginationModel = new TablePagination
+            {
+                ControllerInfo = controllerInfo,
+                CurrentPage = ViewBag.CurrentPage,
+                PageSize = ViewBag.PageSize,
+                TotalSize = ViewBag.TotalSize,
+                HaveNext = ViewBag.HaveNext,
+                HavePrev = ViewBag.HavePrev,
+            };
+
+    var tableHelperModel = new TableHelper
+            {
+                ControllerInfo = controllerInfo,
+                TableTitle = "Cars List",
+                EntityName = "Car",
+            };
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/scss/Settlement/index.min.css" asp-append-version="true" />
+}
+
+
+@await Html.PartialAsync("_EntityTableHelperPartial", tableHelperModel)
+
+<table class="entityTable">
+    <thead>
+        <tr>
+            <th>License plate</th>
+            <th>
+                <div class="headerCellWithFilter">
+                    <p>
+                        Brand
+                    </p>
+                    <form method="get" asp-route="@ViewBag.ViewActionName" class="pageSizeForm">
+                        <input type="hidden" name="page" value="@ViewBag.CurrentPage" />
+                        <input type="hidden" name="pageSize" value="@ViewBag.PageSize" min="1" max="@ViewBag.TotalSize" class="numberField" />
+                        <input type="text" class="filterField" name="brandFilter" value="@ViewBag.BrandFilter" />
+                        <button type="submit" class="defaultButton">Set filter</button>
+                    </form>
+                </div>
+            </th>
+            <th>Power</th>
+            <th>Color</th>
+            <th>Year of production</th>
+            <th>Chassis number</th>
+            <th>Engine number</th>
+            <th>Date received</th>
+            <th>Owner full name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                @{
+                    var popUpId = $"delete-car-{car.Id}";
+                    var deleteEntityModel = new DeleteEntity
+                            {
+                                ControllerInfo = controllerInfo,
+                                Id = car.Id,
+                                PopUpId = popUpId,
+                                ItemName = car.Brand,
+                            };
+
+                    var updateActionParameters = new Dictionary<string, string>
+                            {
+                                { "id", $"{car.Id}" }
+                            };
+                }
+                <td>@car.LicensePlate</td>
+                <td>@car.Brand</td>
+                <td>@car.Power</td>
+                <td>@car.Color</td>
+                <td>@car.YearOfProduction</td>
+                <td>@car.ChassisNumber</td>
+                <td>@car.EngineNumber</td>
+                <td>@car.DateReceived</td>
+                <td>@car.Owner.FullName</td>
+                <td>
+                    <button class="defaultButton" onclick="openModal('@popUpId')">
+                        Delete
+                    </button>
+                    <div id="@popUpId" style="display: none; position: absolute;">
+                        @await Html.PartialAsync("_DeleteEntityConfirmPopUpPartial", deleteEntityModel)
+                    </div>
+                    <a class="defaultButton" asp-route="@ViewBag.UpdateActionName" asp-all-route-data="updateActionParameters">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_EntityTablePaginationPartial", paginationModel)

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<CarStatusDto>
+
+@{
+    var controllerInfo = new ControllerInfo
+            {
+                ControllerName = ViewBag.ControllerName,
+                ViewActionName = ViewBag.ViewActionName,
+                CreateActionName = ViewBag.CreateActionName,
+                DeleteActionName = ViewBag.DeleteActionName,
+                UpdateActionName = ViewBag.UpdateActionName,
+            };
+
+    var paginationModel = new TablePagination
+            {
+                ControllerInfo = controllerInfo,
+                CurrentPage = ViewBag.CurrentPage,
+                PageSize = ViewBag.PageSize,
+                TotalSize = ViewBag.TotalSize,
+                HaveNext = ViewBag.HaveNext,
+                HavePrev = ViewBag.HavePrev,
+            };
+
+    var tableHelperModel = new TableHelper
+            {
+                ControllerInfo = controllerInfo,
+                TableTitle = "Car statues List",
+                EntityName = "Car Status",
+            };
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/scss/Cargo/index.min.css" asp-append-version="true" />
+}
+
+
+@await Html.PartialAsync("_EntityTableHelperPartial", tableHelperModel)
+
+<table class="entityTable">
+    <thead>
+        <tr>
+            <th>
+                <div class="headerCellWithFilter">
+                    <p>
+                        Status
+                    </p>
+                    <form method="get" asp-route="@ViewBag.ViewActionName" class="pageSizeForm">
+                        <input type="hidden" name="page" value="@ViewBag.CurrentPage" />
+                        <input type="hidden" name="pageSize" value="@ViewBag.PageSize" min="1" max="@ViewBag.TotalSize" class="numberField" />
+                        <input type="text" name="carStatusFilter" value="@ViewBag.CarStatusFilter" class="filterField" />
+                        <button type="submit" class="defaultButton">Set filter</button>
+                    </form>
+                </div>
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var carStatus in Model)
+        {
+            <tr>
+                @{
+                    var popUpId = $"delete-car-status-{carStatus.Id}";
+                    var deleteEntityModel = new DeleteEntity
+                            {
+                                ControllerInfo = controllerInfo,
+                                Id = carStatus.Id,
+                                PopUpId = popUpId,
+                                ItemName = $"{carStatus.StatusName}",
+                            };
+
+                    var updateActionParameters = new Dictionary<string, string>
+                            {
+                                { "id", $"{carStatus.Id}" }
+                            };
+                }
+                <td>@carStatus.StatusName</td>
+                <td>
+                    <button class="defaultButton" onclick="openModal('@popUpId')">
+                        Delete
+                    </button>
+                    <div id="@popUpId" style="display: none; position: absolute;">
+                        @await Html.PartialAsync("_DeleteEntityConfirmPopUpPartial", deleteEntityModel)
+                    </div>
+                    <a class="defaultButton" asp-route="@ViewBag.UpdateActionName" asp-all-route-data="updateActionParameters">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_EntityTablePaginationPartial", paginationModel)

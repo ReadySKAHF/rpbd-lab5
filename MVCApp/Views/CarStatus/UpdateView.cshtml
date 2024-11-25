@@ -1,0 +1,24 @@
+﻿@model CarStatusUpdateDto
+
+@section Styles {
+    <link rel="stylesheet" href="~/scss/General/formStyles.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/scss/General/buttonStyles.min.css" asp-append-version="true" />
+}
+
+<div class="formContainer">
+    <h2 class="formTitle">Update Car Status</h2>
+
+    @using (Html.BeginForm("Update", "CarStatus"))
+
+    {
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="fieldContainer">
+            <label class="fieldLabel">Status name</label>
+            @Html.TextBoxFor(c => c.StatusName, new { @class = "formField" })
+            @Html.ValidationMessageFor(c => c.StatusName, "", new { @class = "validationErrorText" })
+        </div>
+
+        <button type="submit" class="defaultButton">Update Car Status</button>
+    }
+</div>

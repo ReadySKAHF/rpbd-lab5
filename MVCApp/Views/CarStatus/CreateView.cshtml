@@ -1,0 +1,21 @@
+﻿@model CarStatusCreateDto
+
+@section Styles {
+    <link rel="stylesheet" href="~/scss/General/formStyles.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/scss/General/buttonStyles.min.css" asp-append-version="true" />
+}
+
+<div class="formContainer">
+    <h2 class="formTitle">Create New Car Status</h2>
+
+    @using (Html.BeginForm("Create", "CarStatus"))
+    {
+        <div class="fieldContainer">
+            <label class="fieldLabel">Status name</label>
+            @Html.TextBoxFor(c => c.StatusName, new { @class = "formField" })
+            @Html.ValidationMessageFor(c => c.StatusName, "", new { @class = "validationErrorText" })
+        </div>
+
+        <button type="submit" class="defaultButton">Create Car Status</button>
+    }
+</div>

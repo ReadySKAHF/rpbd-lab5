@@ -1,0 +1,34 @@
+﻿@charset "UTF-8";
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+  /* Чуть больше расстояние для лучшей структуры */
+  padding: 20px;
+  /* Добавлены отступы по бокам */ }
+  .mainContainer .welcomeText {
+    margin-top: 10vh;
+    /* Увеличен верхний отступ для просторности */
+    text-align: center;
+    font-size: 2.2rem;
+    /* Использован относительный размер для масштабируемости */
+    font-weight: 600;
+    /* Более выраженный текст */
+    color: #333;
+    /* Насыщенный нейтральный цвет */
+    line-height: 1.5;
+    /* Улучшенная читаемость */ }
+  .mainContainer .previewText {
+    text-align: center;
+    font-size: 1.5rem;
+    /* Относительный размер для удобства */
+    font-weight: 400;
+    /* Естественный вес текста */
+    color: #555;
+    /* Мягкий оттенок для дополнительного текста */
+    line-height: 1.4;
+    /* Чуть компактнее для предварительного текста */
+    max-width: 800px;
+    /* Ограничение ширины для аккуратного отображения */ }

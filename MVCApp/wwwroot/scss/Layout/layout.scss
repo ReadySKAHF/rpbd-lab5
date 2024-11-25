@@ -1,0 +1,54 @@
+﻿header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #333, #555); /* Градиент для глубины */
+    padding: 20px 40px; /* Увеличены отступы для более просторного вида */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для выделения */
+
+    .headerTitle {
+        color: #fff;
+        font-size: 1.8rem; /* Относительный размер для масштабируемости */
+        margin: 0;
+        text-decoration: none;
+        font-weight: 600; /* Более выразительный заголовок */
+        letter-spacing: 0.05em; /* Лёгкое разрежение текста */
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #ddd; /* Лёгкий эффект при наведении */
+        }
+    }
+
+    .entityNav {
+        .entityNavListContainer {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px; /* Увеличено расстояние между элементами */
+
+            li {
+                a {
+                    text-decoration: none;
+                    color: #fff;
+                    font-size: 1rem;
+                    padding: 0.6rem 1.2rem; /* Более просторные отступы */
+                    border-radius: 6px; /* Умеренно округлые края */
+                    transition: all 0.3s ease;
+                    background-color: transparent; /* Прозрачный фон по умолчанию */
+
+                    &:hover {
+                        background-color: #444; /* Цвет при наведении */
+                        color: #eee; /* Светлый текст при наведении */
+                        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Лёгкая тень */
+                    }
+                }
+            }
+        }
+    }
+}
+
+.container {
+    padding: 10px 20px; /* Добавлены горизонтальные отступы */
+}

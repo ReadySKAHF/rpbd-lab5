@@ -1,0 +1,120 @@
+﻿.tableHelper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Пространство между помощником и таблицей */
+
+    .tableHelperButtons {
+        display: flex;
+        gap: 15px; /* Уменьшено для компактности */
+
+        .pageSizeForm {
+            display: flex;
+            align-items: center;
+
+            .numberField {
+                width: 80px; /* Увеличена ширина для удобства */
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                margin-right: 10px;
+                font-size: 14px; /* Больше для читаемости */
+                transition: border-color 0.3s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: #007bff;
+                    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Подсветка при фокусе */
+                }
+            }
+        }
+    }
+}
+
+.filterField {
+    width: 200px; /* Увеличена ширина для ввода */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Подсветка при фокусе */
+    }
+}
+
+.entityTable {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px; /* Округлённые края для всей таблицы */
+    overflow: hidden; /* Обрезаем края при округлении */
+
+    th, td {
+        padding: 12px 15px; /* Просторнее для удобства чтения */
+        text-align: left;
+        border: 1px solid #ddd;
+        text-overflow: ellipsis;
+        font-size: 14px; /* Унифицированный размер текста */
+        white-space: nowrap; /* Сокращение длинного текста */
+    }
+
+    th {
+        background-color: #f7f7f7; /* Светлее для современного вида */
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #555;
+        letter-spacing: 0.05em;
+    }
+
+    tbody {
+        tr {
+            &:nth-child(even) {
+                background-color: #fafafa; /* Более мягкий цвет для чётных строк */
+            }
+
+            &:hover {
+                background-color: #f1f1f1; /* Эффект при наведении */
+                cursor: pointer; /* Указатель при наведении */
+            }
+        }
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px; /* Интервалы между элементами */
+
+    .current-page {
+        margin: 0 15px;
+        font-weight: bold;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .page-button {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: #e0e0e0;
+        }
+
+        &:active {
+            background-color: #ccc;
+            transform: scale(0.95); /* Эффект нажатия */
+        }
+    }
+}

@@ -1,0 +1,70 @@
+﻿@charset "UTF-8";
+.formContainer {
+  max-width: 400px;
+  /* Фиксированная ширина для адаптивности */
+  margin: 5vh auto;
+  padding: 25px;
+  background-color: #ffffff;
+  /* Чистый белый фон */
+  border: 1px solid #e0e0e0;
+  /* Светлый, минималистичный бордер */
+  border-radius: 12px;
+  /* Более округлые углы */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  /* Глубокая, но мягкая тень */
+  animation: fadeIn 0.4s ease;
+  /* Анимация появления */ }
+  .formContainer .formTitle {
+    text-align: center;
+    font-size: 1.8em;
+    /* Немного увеличен размер */
+    margin-bottom: 25px;
+    color: #222;
+    /* Более насыщенный цвет */
+    font-weight: 600;
+    /* Добавлена выразительность */ }
+  .formContainer .fieldContainer {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; }
+    .formContainer .fieldContainer .fieldLabel {
+      font-size: 1em;
+      color: #555;
+      margin-bottom: 8px;
+      /* Чуть больше отступ */
+      font-weight: 500; }
+    .formContainer .fieldContainer .formField {
+      padding: 12px;
+      font-size: 1em;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      /* Чуть более округлые края */
+      outline: none;
+      transition: all 0.3s ease;
+      background-color: #f8f9fa;
+      /* Лёгкий серый фон для комфорта */ }
+      .formContainer .fieldContainer .formField:hover {
+        border-color: #b0b0b0;
+        /* Лёгкий эффект при наведении */ }
+      .formContainer .fieldContainer .formField:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+        /* Подсветка при фокусе */
+        background-color: #ffffff;
+        /* Убираем фон при фокусе */ }
+    .formContainer .fieldContainer .validationErrorText {
+      color: #e63946;
+      /* Яркий красный для ошибки */
+      font-size: 0.875em;
+      margin-top: 8px;
+      /* Пространство между полем и текстом ошибки */ }
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); }
+  to {
+    opacity: 1;
+    transform: translateY(0); } }

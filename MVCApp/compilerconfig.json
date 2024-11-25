@@ -1,0 +1,30 @@
+﻿[
+  {
+    "outputFile": "wwwroot/scss/General/buttonStyles.css",
+    "inputFile": "wwwroot/scss/General/buttonStyles.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/General/defaultSiteStyles.css",
+    "inputFile": "wwwroot/scss/General/defaultSiteStyles.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/General/entityTable.css",
+    "inputFile": "wwwroot/scss/General/entityTable.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/Layout/layout.css",
+    "inputFile": "wwwroot/scss/Layout/layout.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/Home/index.css",
+    "inputFile": "wwwroot/scss/Home/index.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/General/formStyles.css",
+    "inputFile": "wwwroot/scss/General/formStyles.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/General/deleteModalStyles.css",
+    "inputFile": "wwwroot/scss/General/deleteModalStyles.scss"
+  }
+]

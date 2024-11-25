@@ -1,0 +1,97 @@
+﻿@model IEnumerable<OwnerDto>
+
+@{
+    var controllerInfo = new ControllerInfo
+            {
+                ControllerName = ViewBag.ControllerName,
+                ViewActionName = ViewBag.ViewActionName,
+                CreateActionName = ViewBag.CreateActionName,
+                DeleteActionName = ViewBag.DeleteActionName,
+                UpdateActionName = ViewBag.UpdateActionName,
+            };
+
+    var paginationModel = new TablePagination
+            {
+                ControllerInfo = controllerInfo,
+                CurrentPage = ViewBag.CurrentPage,
+                PageSize = ViewBag.PageSize,
+                TotalSize = ViewBag.TotalSize,
+                HaveNext = ViewBag.HaveNext,
+                HavePrev = ViewBag.HavePrev,
+            };
+
+    var tableHelperModel = new TableHelper
+            {
+                ControllerInfo = controllerInfo,
+                TableTitle = "Owner List",
+                EntityName = "Owner",
+            };
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/scss/Route/index.min.css" asp-append-version="true" />
+}
+
+
+@await Html.PartialAsync("_EntityTableHelperPartial", tableHelperModel)
+
+<table class="entityTable">
+    <thead>
+        <tr>
+            <th>Driver license number</th>
+            <th>
+                <div class="headerCellWithFilter">
+                    <p>
+                        Full name
+                    </p>
+                    <form method="get" asp-route="@ViewBag.ViewActionName" class="pageSizeForm">
+                        <input type="hidden" name="page" value="@ViewBag.CurrentPage" />
+                        <input type="hidden" name="pageSize" value="@ViewBag.PageSize" min="1" max="@ViewBag.TotalSize" class="numberField" />
+                        <input type="text" class="filterField" name="fullNameFilter" value="@ViewBag.FullNameFilter" />
+                        <button type="submit" class="defaultButton">Set filter</button>
+                    </form>
+                </div>
+            </th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var owner in Model)
+        {
+            <tr>
+                @{
+                    var popUpId = $"delete-owner-{owner.Id}";
+                    var deleteEntityModel = new DeleteEntity
+                            {
+                                ControllerInfo = controllerInfo,
+                                Id = owner.Id,
+                                PopUpId = popUpId,
+                                ItemName = $"Owner {owner.FullName}",
+                            };
+
+                    var updateActionParameters = new Dictionary<string, string>
+                            {
+                                { "id", $"{owner.Id}" }
+                            };
+                }
+                <td>@owner.DriverLicenseNumber</td>
+                <td>@owner.FullName</td>
+                <td>@owner.Address</td>
+                <td>@owner.Phone</td>
+                <td>
+                    <button class="defaultButton" onclick="openModal('@popUpId')">
+                        Delete
+                    </button>
+                    <div id="@popUpId" style="display: none; position: absolute;">
+                        @await Html.PartialAsync("_DeleteEntityConfirmPopUpPartial", deleteEntityModel)
+                    </div>
+                    <a class="defaultButton" asp-route="@ViewBag.UpdateActionName" asp-all-route-data="updateActionParameters">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_EntityTablePaginationPartial", paginationModel)

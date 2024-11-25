@@ -1,0 +1,39 @@
+﻿@model OwnerCreateDto
+
+@section Styles {
+    <link rel="stylesheet" href="~/scss/General/formStyles.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/scss/General/buttonStyles.min.css" asp-append-version="true" />
+}
+
+<div class="formContainer">
+    <h2 class="formTitle">Create New Owner</h2>
+
+    @using (Html.BeginForm("Create", "Owner"))
+    {
+
+        <div class="fieldContainer">
+            <label class="fieldLabel" for="distance">Driver license number</label>
+            @Html.TextBoxFor(m => m.DriverLicenseNumber, new { @class = "formField", type = "string" })
+            @Html.ValidationMessageFor(m => m.DriverLicenseNumber, "", new { @class = "validationErrorText" })
+        </div>
+
+        <div class="fieldContainer">
+            <label class="fieldLabel" for="startSettlement">Full Name</label>
+            @Html.TextBoxFor(m => m.FullName, new { @class = "formField", type = "string" })
+            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "validationErrorText" })
+        </div>
+
+        <div class="fieldContainer">
+            <label class="fieldLabel" for="startSettlement">Address</label>
+            @Html.TextBoxFor(m => m.Address, new { @class = "formField", type = "string" })
+            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "validationErrorText" })
+        </div>
+        <div class="fieldContainer">
+            <label class="fieldLabel" for="startSettlement">Phone</label>
+            @Html.TextBoxFor(m => m.Phone, new { @class = "formField", type = "string" })
+            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "validationErrorText" })
+        </div>
+
+        <button type="submit" class="defaultButton">Create Owner</button>
+    }
+</div>

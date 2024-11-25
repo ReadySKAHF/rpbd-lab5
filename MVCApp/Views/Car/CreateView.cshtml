@@ -1,0 +1,61 @@
+﻿@model CarCreateDto
+
+@section Styles {
+    <link rel="stylesheet" href="~/scss/General/formStyles.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/scss/General/buttonStyles.min.css" asp-append-version="true" />
+}
+
+<div class="formContainer">
+    <h2 class="formTitle">Create New Car</h2>
+
+    @using (Html.BeginForm("Create", "Car"))
+    {
+        <div class="fieldContainer">
+            <label class="fieldLabel">License plate</label>
+            @Html.TextBoxFor(c => c.LicensePlate, new { @class = "formField" })
+            @Html.ValidationMessageFor(c => c.LicensePlate, "", new { @class = "validationErrorText" })
+        </div>
+        <div class="fieldContainer">
+            <label class="fieldLabel">Brand</label>
+            @Html.TextBoxFor(c => c.Brand, new { @class = "formField" })
+            @Html.ValidationMessageFor(c => c.Brand, "", new { @class = "validationErrorText" })
+        </div>
+        <div class="fieldContainer">
+            <label class="fieldLabel">Power</label>
+            @Html.TextBoxFor(c => c.Power, new { @class = "formField", type = "number", min = "1" })
+            @Html.ValidationMessageFor(c => c.Power, "", new { @class = "validationErrorText" })
+        </div>
+        <div class="fieldContainer">
+            <label class="fieldLabel">Color</label>
+            @Html.TextBoxFor(c => c.Color, new { @class = "formField" })
+            @Html.ValidationMessageFor(c => c.Color, "", new { @class = "validationErrorText" })
+        </div>
+        <div class="fieldContainer">
+            <label class="fieldLabel">YearOfProduction</label>
+            @Html.TextBoxFor(c => c.YearOfProduction, new { @class = "formField", type = "number", min = "1" })
+            @Html.ValidationMessageFor(c => c.YearOfProduction, "", new { @class = "validationErrorText" })
+        </div>
+        <div class="fieldContainer">
+            <label class="fieldLabel">Chassis number</label>
+            @Html.TextBoxFor(c => c.ChassisNumber, new { @class = "formField" })
+            @Html.ValidationMessageFor(c => c.ChassisNumber, "", new { @class = "validationErrorText" })
+        </div>
+        <div class="fieldContainer">
+            <label class="fieldLabel">Engine number</label>
+            @Html.TextBoxFor(c => c.EngineNumber, new { @class = "formField" })
+            @Html.ValidationMessageFor(c => c.EngineNumber, "", new { @class = "validationErrorText" })
+        </div>
+        <div class="fieldContainer">
+            <label class="fieldLabel">Date received</label>
+            @Html.TextBoxFor(c => c.DateReceived, new { @class = "formField", Type = "date" })
+            @Html.ValidationMessageFor(c => c.DateReceived, "", new { @class = "validationErrorText" })
+        </div>
+
+        <div class="fieldContainer">
+            <label class="fieldLabel" for="owner">Owner</label>
+            @Html.DropDownListFor(m => m.OwnerId, (SelectList)ViewBag.Owners, "Select End Settlement", new { @class = "formField" })
+            @Html.ValidationMessageFor(m => m.OwnerId, "", new { @class = "validationErrorText" })
+        </div>
+        <button type="submit" class="defaultButton">Create Car</button>
+    }
+</div>
