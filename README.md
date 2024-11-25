@@ -1,1 +1,1 @@
-[![.NET](https://github.com/ReadySKAHF/rpbd-lab5/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/ReadySKAHF/rpbd-lab5/actions/workflows/dotnet-desktop.yml)
+[![DbApp](https://github.com/ReadySKAHF/Lab5_RPBDIS/actions/workflows/dotnet-desktop-build.yml/badge.svg)](https://github.com/ReadySKAHF/Lab5_RPBDIS/actions/workflows/dotnet-desktop-build.yml)
